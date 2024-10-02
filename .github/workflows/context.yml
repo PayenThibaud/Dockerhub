@@ -1,0 +1,19 @@
+name: mon context
+on: workflow_dispatch
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: infos de mon context github
+        run: echo "${{ toJson(github) }}"
+
+  variables:
+    runs-on: ubuntu-latest
+    steps:
+      - name: mes variables d'environement
+        env:
+          MA_VARIABLE: ${{ vars.MA_VARIABLE }}
+          MON_SECRET: ${{ secrets.MON_SECRET }}
+        run: |
+          echo "Le secret est $MON_SECRET"
+          echo "Ma variable est $MA_VARIABLE"
